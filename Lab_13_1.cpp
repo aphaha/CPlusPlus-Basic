@@ -17,30 +17,31 @@ int main()
     
     cout << "Enter hours: ";
     cin >> date.hours;
+    while (date.hours > 24 || date.hours < 0) {
+        cout << "Error: put the number from 0 to 23" << endl;
+        cin >> date.hours;
+    }
     
     cout << "Enter minutes: ";
     cin >> date.minutes;
+    while (date.minutes > 60 || date.minutes < 0) {
+        cout << "Error: put the number from 0 to 59" << endl;
+        cin >> date.minutes;
+    }    
     
     cout << "Enter time elapsed(in minutes): ";
     cin >> time;
     
-    if(date.hours < 24 && date.minutes < 60){
-        m = date.hours * 60 + date.minutes + time;
-        h = m / 60;
-        m %= 60;
+    m = date.hours * 60 + date.minutes + time;
+    h = m / 60;
+    m %= 60;
         
-        if(h > 23){
-            x = trunc(h) / 24;
-            h = h - trunc(x) * 24;
-        }
+    if(h > 23){
+        x = trunc(h) / 24;
+        h = h - trunc(x) * 24;
+    }
         
-        cout << h << ":" << m;
-    }
-    else{
-        cout << "Error: wrong time entered";
-    }
-    
-    
+    cout << h << ":" << m;
 
     return 0;
 }
